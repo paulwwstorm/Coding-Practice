@@ -1,31 +1,7 @@
 import java.util.Arrays;
 
 class Solution {
-    // This was a bad idea
-    // public static void merge(int[] nums1, int m, int[] nums2, int n) {
-    // for (int i = 0; i < nums2.length; i++) {
-    // for (int j = i; j < nums1.length; j++) {
-    // if (nums1[j] > nums2[i]) {
-    // int current = nums2[i];
-    // for (int k = j; k < nums1.length; k++) {
-    // int next = nums1[k];
-    // nums1[k] = current;
-    // current = next;
-    // if (nums1[k] == 0) {
-    // k = nums1.length;
-    // }
-    // }
-
-    // j = nums1.length;
-    // }
-    // }
-    // }
-    // System.out.println(Arrays.toString(nums1));
-    // }
-
-    // Still not working, but I think this is the right track
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        // Declare new array of size m + n
         int[] combinedArray = new int[m + n];
 
         int nums1Position = 0;
@@ -33,12 +9,12 @@ class Solution {
         int combinedArrayPosition = 0;
 
         while (true) {
-            if (nums1[nums1Position] > nums2[nums2Position]) {
+            if (nums1[nums1Position] < nums2[nums2Position]) {
                 combinedArray[combinedArrayPosition] = nums1[nums1Position];
                 nums1Position++;
                 combinedArrayPosition++;
                 if (nums1Position == m) {
-                    for (int i = nums2Position; nums2Position > n; i++) {
+                    for (int i = nums2Position; i < n; i++) {
                         combinedArray[combinedArrayPosition] = nums2[i];
                         combinedArrayPosition++;
                     }
@@ -49,7 +25,7 @@ class Solution {
                 nums2Position++;
                 combinedArrayPosition++;
                 if (nums2Position == n) {
-                    for (int i = nums1Position; nums1Position > m; i++) {
+                    for (int i = nums1Position; i < m; i++) {
                         combinedArray[combinedArrayPosition] = nums1[i];
                         combinedArrayPosition++;
                     }
