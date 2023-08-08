@@ -7,8 +7,19 @@ class Solution {
         int nums1Position = 0;
         int nums2Position = 0;
         int combinedArrayPosition = 0;
+        boolean emptyArray = false;
 
-        while (true) {
+        System.out.println(m);
+        System.out.println(n);
+
+        if (m == 0) {
+            System.arraycopy(nums2, 0, nums1, 0, (m + n));
+            emptyArray = true;
+        } else if (n == 0) {
+            emptyArray = true;
+        }
+
+        while (!emptyArray) {
             if (nums1[nums1Position] < nums2[nums2Position]) {
                 combinedArray[combinedArrayPosition] = nums1[nums1Position];
                 nums1Position++;
@@ -18,7 +29,8 @@ class Solution {
                         combinedArray[combinedArrayPosition] = nums2[i];
                         combinedArrayPosition++;
                     }
-                    break;
+                    emptyArray = true;
+                    System.arraycopy(combinedArray, 0, nums1, 0, (m + n));
                 }
             } else {
                 combinedArray[combinedArrayPosition] = nums2[nums2Position];
@@ -29,18 +41,18 @@ class Solution {
                         combinedArray[combinedArrayPosition] = nums1[i];
                         combinedArrayPosition++;
                     }
-                    break;
+                    emptyArray = true;
+                    System.arraycopy(combinedArray, 0, nums1, 0, (m + n));
                 }
             }
         }
 
-        nums1 = combinedArray;
-        System.out.println(Arrays.toString(nums1));
+        System.out.println(Arrays.toString(combinedArray));
     }
 
-    public static void main(String[] args) {
-        int[] nums1 = { 1, 2, 3, 0, 0, 0 };
-        int[] nums2 = { 2, 5, 6 };
-        merge(nums1, 3, nums2, 3);
-    }
+    // public static void main(String[] args) {
+    // int[] nums1 = { 1, 2, 3, 0, 0, 0 };
+    // int[] nums2 = { 2, 5, 6 };
+    // merge(nums1, 3, nums2, 3);
+    // }
 }
