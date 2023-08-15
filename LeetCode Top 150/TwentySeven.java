@@ -1,5 +1,5 @@
 //Solution using System.arraycopy()
-class Solution {
+class TwentySeven {
     public static int removeElement(int[] nums, int val) {
         int remaining = nums.length;
         for (int i = 0; i < remaining; i++) {
