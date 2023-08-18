@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-class Solution {
+class EightyEight {
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] combinedArray = new int[m + n];
 
