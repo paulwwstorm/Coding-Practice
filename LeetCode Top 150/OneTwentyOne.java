@@ -74,30 +74,31 @@ public class OneTwentyOne {
     // return maxDiff;
     // }
 
-    public static int maxProfitPointers(int[] nums) {
+    // Ain't pretty, but it works.
+    public static int maxProfit(int[] nums) {
         int maxDiff = 0;
         int buyIndex = 0;
         int sellIndex = 1;
 
         while (sellIndex < nums.length) {
             int currentDiff = nums[sellIndex] - nums[buyIndex];
-            // System.out.println(nums[buyIndex]);
-            // System.out.println(nums[buyIndex]);
 
             if (currentDiff > maxDiff) {
                 maxDiff = currentDiff;
-                for (int i = buyIndex; i < sellIndex; i++) {
-                    int diff = nums[sellIndex] - nums[buyIndex];
+                for (int i = buyIndex + 1; i < sellIndex; i++) {
+                    int diff = nums[sellIndex] - nums[i];
                     if (diff > maxDiff) {
                         buyIndex = i;
                         maxDiff = diff;
                     }
                 }
             } else if (nums[sellIndex] < nums[buyIndex]) {
+                sellIndex++;
                 buyIndex = sellIndex - 1;
+            } else {
+                sellIndex++;
             }
 
-            sellIndex++;
         }
 
         return maxDiff;
@@ -110,8 +111,8 @@ public class OneTwentyOne {
 
         // 1 1 2 3 4 4 4 5 6 i
         // 6 5 4 4 4 3 2 1 1 j
-        System.out.println(maxProfitPointers(nums1));
-        System.out.println(maxProfitPointers(nums2));
-        System.out.println(maxProfitPointers(nums3));
+        System.out.println(maxProfit(nums1));
+        System.out.println(maxProfit(nums2));
+        System.out.println(maxProfit(nums3));
     }
 }
