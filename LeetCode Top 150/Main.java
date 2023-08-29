@@ -6,6 +6,8 @@ public class Main {
         Boolean try1 = randomizedSet.insert(2);
         Boolean try2 = randomizedSet.insert(2);
         Boolean try3 = randomizedSet.insert(5);
+        Boolean try4 = randomizedSet.insert(10);
+        Boolean try5 = randomizedSet.insert(22);
         System.out.println(try1.toString());
         System.out.println(try2.toString());
         System.out.println(Arrays.toString(randomizedSet.randomizedSet));

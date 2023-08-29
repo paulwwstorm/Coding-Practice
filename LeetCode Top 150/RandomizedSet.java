@@ -13,6 +13,7 @@ public class RandomizedSet {
         if (!contains) {
             int[] newRandomizedSet = new int[randomizedSet.length + 1];
             newRandomizedSet[newRandomizedSet.length - 1] = val;
+            System.arraycopy(randomizedSet, 0, newRandomizedSet, 0, randomizedSet.length);
             randomizedSet = newRandomizedSet;
         }
 
