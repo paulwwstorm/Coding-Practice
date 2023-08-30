@@ -1,30 +1,41 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RandomizedSet {
-    public int[] randomizedSet;
+    public List<Integer> randomizedSet;
 
     public RandomizedSet() {
-        randomizedSet = new int[0];
+        randomizedSet = new ArrayList<Integer>();
     }
 
     public boolean insert(int val) {
-        boolean contains = Arrays.stream(randomizedSet).anyMatch(x -> x == val);
+        int valIndex = randomizedSet.indexOf(val);
 
-        if (!contains) {
-            int[] newRandomizedSet = new int[randomizedSet.length + 1];
-            newRandomizedSet[newRandomizedSet.length - 1] = val;
-            System.arraycopy(randomizedSet, 0, newRandomizedSet, 0, randomizedSet.length);
-            randomizedSet = newRandomizedSet;
+        if (valIndex < 0) {
+            randomizedSet.add(val);
+            return true;
         }
 
-        return contains;
+        return false;
     }
 
-    // public boolean remove(int val) {
+    public boolean remove(int val) {
+        int valIndex = randomizedSet.indexOf(val);
 
-    // }
+        if (valIndex >= 0) {
+            randomizedSet.remove(valIndex);
+            return true;
+        }
 
-    // public int getRandom() {
+        return false;
+    }
 
-    // }
+    public int getRandom() {
+        Random ran = new Random();
+        int randomIndex = ran.nextInt(randomizedSet.size());
+        return randomizedSet.get(randomIndex);
+    }
 }
