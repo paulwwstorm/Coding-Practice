@@ -1,23 +1,34 @@
 public class OneThreeFour {
     public static int canCompleteCircuit(int[] gas, int[] cost) {
-        int index = 0;
+        int startIndex = 0;
         int count = 0;
         int tank = 0;
+        int currentIndex = 0;
 
-        whileloop: while (count < gas.length) {
-            tank += gas[count];
-            // System.out.println("After fill-up tank: " + tank);
-            tank -= cost[count];
-            // System.out.println("After travelling tank: " + tank);
-            if (tank < 0) {
-                index += 1;
-                break whileloop;
+        for (int i = 0; i < cost.length; i++) {
+            startIndex = i;
+            currentIndex = i;
+            count = 0;
+            tank = 0;
+            whileloop: while (count < gas.length) {
+                tank += gas[currentIndex];
+                // System.out.println("After fill-up tank: " + tank);
+                tank -= cost[currentIndex];
+                // System.out.println("After travelling tank: " + tank);
+                if (tank < 0) {
+                    break whileloop;
+                }
+
+                currentIndex += 1;
+                if (currentIndex == gas.length) {
+                    currentIndex = 0;
+                }
+                count += 1;
             }
-            count += 1;
-        }
 
-        if (count == gas.length) {
-            return index;
+            if (count == gas.length) {
+                return startIndex;
+            }
         }
 
         return -1;
