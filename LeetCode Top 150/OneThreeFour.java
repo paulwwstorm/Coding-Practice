@@ -23,7 +23,9 @@ public class OneThreeFour {
                     tank += gas[currentIndex];
                     tank -= cost[currentIndex];
                     if (tank < 0) {
-                        i = currentIndex + 1;
+                        if (currentIndex > i) {
+                            i = currentIndex;
+                        }
                         break whileloop;
                     }
 
