@@ -5,29 +5,38 @@ public class OneThreeFour {
         int tank = 0;
         int currentIndex = 0;
 
+        if (gas.length == 1) {
+            if ((gas[0] - cost[0]) >= 0) {
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+
         for (int i = 0; i < cost.length; i++) {
             startIndex = i;
             currentIndex = i;
             count = 0;
             tank = 0;
-            whileloop: while (count < gas.length) {
-                tank += gas[currentIndex];
-                // System.out.println("After fill-up tank: " + tank);
-                tank -= cost[currentIndex];
-                // System.out.println("After travelling tank: " + tank);
-                if (tank < 0) {
-                    break whileloop;
+            if ((gas[i] - cost[i] > 0)) {
+                whileloop: while (count < gas.length) {
+                    tank += gas[currentIndex];
+                    tank -= cost[currentIndex];
+                    if (tank < 0) {
+                        i = currentIndex + 1;
+                        break whileloop;
+                    }
+
+                    currentIndex += 1;
+                    if (currentIndex == gas.length) {
+                        currentIndex = 0;
+                    }
+                    count += 1;
                 }
 
-                currentIndex += 1;
-                if (currentIndex == gas.length) {
-                    currentIndex = 0;
+                if (count == gas.length) {
+                    return startIndex;
                 }
-                count += 1;
-            }
-
-            if (count == gas.length) {
-                return startIndex;
             }
         }
 
