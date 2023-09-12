@@ -17,20 +17,21 @@ class FortyTwo {
             }
         }
 
-        int currentLeftPeak = 0;
+        int currentPeak = 0;
         for (int j = 0; j < highestIndex; j++) {
-            if (height[j] >= height[currentLeftPeak]) {
-                currentLeftPeak = j;
+            if (height[j] >= height[currentPeak]) {
+                currentPeak = j;
             } else {
-                waterTotal += height[currentLeftPeak] - height[j]; 
+                waterTotal += height[currentPeak] - height[j]; 
             }
         }
 
-        for (int k = (height.length - 1); k > highestIndex; j--) {
-            if (height[j] >= height[currentLeftPeak]) {
-                currentLeftPeak = j;
+        currentPeak = height.length - 1;
+        for (int k = (height.length - 1); k > highestIndex; k--) {
+            if (height[k] >= height[currentPeak]) {
+                currentPeak = k;
             } else {
-                waterTotal += height[currentLeftPeak] - height[j]; 
+                waterTotal += height[currentPeak] - height[k]; 
             }
         }
 
