@@ -1,4 +1,4 @@
-class FortyTwo {
+public class FortyTwo {
     public static int trap(int[] height) {
         // So basically there are three key sections we need to break down
         // We need to find the two highest points
