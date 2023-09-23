@@ -7,6 +7,9 @@ class Solution:
         final_string = ""
         iterator1 = (num_rows * 2) - 4
         iterator2 = 2
+
+        if (num_rows == 1):
+            return s
         
         for x in range(num_rows):
             pos = x
@@ -46,4 +49,4 @@ class Solution:
 
     print(convert(str1, row1) == output1)
     print(convert(str2, row2) == output2)
-    # print(convert(str3, row3) == output3)
+    print(convert(str3, row3) == output3)
