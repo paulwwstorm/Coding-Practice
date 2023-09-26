@@ -5,7 +5,7 @@ class Solution:
         current_length = 0
         number_of_words = 0
 
-        while(True):
+        while True:
             current_word = ""
             try:
                 current_word = words[0]
@@ -13,62 +13,57 @@ class Solution:
             except:
                 break
 
-            if ((current_length + (len(current_word) + 1)) > 16):
+            if ((current_length + number_of_words) + (len(current_word))) > maxWidth:
                 formatted_line = ""
-                if (number_of_words == 1):
+                if number_of_words == 1:
                     formatted_line += current_line[0]
-                    print("one word line")
-                    print("current_length: " + str(current_length))
-                    for x in range(16 - current_length):
+                    for x in range(maxWidth - current_length):
                         formatted_line += " "
                 else:
-                    white_space = int((16 - current_length) / (number_of_words - 1)) + number_of_words
-                    extra_white_space = int((16 - current_length) % (number_of_words - 1))
+                    white_space = (
+                        int(
+                            (maxWidth - (current_length + (number_of_words - 1)))
+                            / (number_of_words - 1)
+                        )
+                        + 1
+                    )
+                    extra_white_space = int(
+                        (maxWidth - current_length) % (number_of_words - 1)
+                    )
                     for x in range(len(current_line) - 1):
                         for y in range(white_space):
                             current_line[x] += " "
-                        if (x == 0):
-                            for z in range(extra_white_space):
-                                current_line[x] += " "
+                        if extra_white_space > 0:
+                            current_line[x] += " "
+                            extra_white_space -= 1
                         formatted_line += current_line[x]
 
                     formatted_line += current_line[-1]
                 justified.append(formatted_line)
                 current_line = [current_word]
-                current_length = len(current_word) + 1
+                current_length = len(current_word)
                 number_of_words = 1
             else:
                 current_line.append(current_word)
-                current_length += len(current_word) + 1
+                current_length += len(current_word)
                 number_of_words += 1
 
         # Format final line
-        white_space = int(((16 - current_length) / (number_of_words * 2)) + number_of_words)
-
         final_line = ""
-        for x in range(len(current_line)):
+        for x in range(len(current_line) - 1):
             final_line += current_line[x] + " "
+
+        final_line += current_line[-1]
+
+        white_space = maxWidth - len(final_line)
 
         for y in range(white_space):
             final_line += " "
-        
+
         justified.append(final_line)
 
         return justified
 
-    words1 = ["This", "is", "an", "example", "of", "text", "justification."]
-    maxWidth1 = 16
-    words2 = ["What","must","be","acknowledgment","shall","be"]
-    maxWidth2 = 16
-    words3 = ["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"]
-    maxWidth3 = 20
-
-    # print(fullJustify(words1, maxWidth1))
+    print(fullJustify(words1, maxWidth1))
     print(fullJustify(words2, maxWidth2))
-    # print(fullJustify(words3, maxWidth3))
-
-
-
-
-
-
+    print(fullJustify(words3, maxWidth3))
