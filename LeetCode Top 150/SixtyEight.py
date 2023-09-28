@@ -63,7 +63,3 @@ class Solution:
         justified.append(final_line)
 
         return justified
-
-    print(fullJustify(words1, maxWidth1))
-    print(fullJustify(words2, maxWidth2))
-    print(fullJustify(words3, maxWidth3))
