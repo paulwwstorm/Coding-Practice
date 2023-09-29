@@ -5,7 +5,6 @@ public class OneFiftyOne {
 
         for (int i = 0; i < words.length; i++) {
             if (words[words.length - (i + 1)] != "") {
-                System.out.println("*" + words[words.length - (i + 1)].strip() + "*");
                 reversedString = reversedString + words[words.length - (i + 1)].strip() + " ";
             }
         }
