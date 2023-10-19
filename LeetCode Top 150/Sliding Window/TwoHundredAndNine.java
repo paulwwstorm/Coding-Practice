@@ -11,26 +11,31 @@ public class TwoHundredAndNine {
         int length = nums.length + 1;
         int arrBeginning = 0;
         int arrEnd = 1;
-        int currSum = nums[arrBeginning] + nums[arrEnd];
+        int currSum = nums[arrBeginning];
 
         while (arrEnd < nums.length) {
+            currSum = currSum + nums[arrEnd];
+            // System.out.println(currSum);
+            // System.out.println(arrBeginning);
+            // System.out.println(arrEnd);
+            // System.out.println("\n");
             if (currSum >= target) {
                 while (arrBeginning < arrEnd) {
                     if (currSum - nums[arrBeginning] >= target) {
+                        currSum = currSum - nums[arrBeginning];
                         arrBeginning += 1;
                     } else {
                         break;
                     }
                 }
                 if ((arrEnd - arrBeginning + 1) < length) {
-                    length = arrEnd - arrBeginning + 1;
+                    // System.out.println(arrBeginning);
+                    // System.out.println(arrEnd);
+                    // System.out.println("\n");
+                    length = (arrEnd - arrBeginning) + 1;
                 }
             }
-            arrBeginning += 1;
             arrEnd += 1;
-
-            currSum = currSum - nums[arrBeginning - 1] + nums[arrEnd];
-            System.out.println(currSum);
         }
 
         if (length == (nums.length + 1)) {
@@ -49,7 +54,7 @@ public class TwoHundredAndNine {
         int[] nums3 = { 1, 1, 1, 1, 1, 1, 1, 1 };
 
         System.out.println(minSubArrayLen(target1, nums1));
-        // System.out.println(minSubArrayLen(target2, nums2));
-        // System.out.println(minSubArrayLen(target3, nums3));
+        System.out.println(minSubArrayLen(target2, nums2));
+        System.out.println(minSubArrayLen(target3, nums3));
     }
 }
