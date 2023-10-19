@@ -1,24 +1,13 @@
 public class TwoHundredAndNine {
     public static int minSubArrayLen(int target, int[] nums) {
-        if (nums.length == 1) {
-            if (nums[0] > target) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-
         int length = nums.length + 1;
         int arrBeginning = 0;
-        int arrEnd = 1;
-        int currSum = nums[arrBeginning];
+        int arrEnd = 0;
+        int currSum = 0;
 
         while (arrEnd < nums.length) {
             currSum = currSum + nums[arrEnd];
-            // System.out.println(currSum);
-            // System.out.println(arrBeginning);
-            // System.out.println(arrEnd);
-            // System.out.println("\n");
+
             if (currSum >= target) {
                 while (arrBeginning < arrEnd) {
                     if (currSum - nums[arrBeginning] >= target) {
@@ -29,9 +18,6 @@ public class TwoHundredAndNine {
                     }
                 }
                 if ((arrEnd - arrBeginning + 1) < length) {
-                    // System.out.println(arrBeginning);
-                    // System.out.println(arrEnd);
-                    // System.out.println("\n");
                     length = (arrEnd - arrBeginning) + 1;
                 }
             }
