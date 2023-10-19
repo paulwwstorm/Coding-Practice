@@ -1,27 +1,23 @@
 public class TwoHundredAndNine {
     public static int minSubArrayLen(int target, int[] nums) {
-        int length = 0;
-        int currSum = 0;
-        int arrBeginning = 0;
-        int arrEnd = 0;
-
-        forloop: for (int i = 0; i < nums.length; i++) {
-            currSum += nums[i];
-            if (currSum >= target) {
-                length = arrEnd - arrBeginning + 1;
-                arrEnd = i;
-                break forloop;
+        if (nums.length == 1) {
+            if (nums[0] > target) {
+                return 1;
+            } else {
+                return 0;
             }
         }
 
-        while (arrEnd > nums.length) {
-            arrBeginning += 1;
-            arrEnd += 1;
-            currSum = currSum - nums[arrEnd] + nums[arrEnd];
+        int length = nums.length + 1;
+        int arrBeginning = 0;
+        int arrEnd = 1;
+        int currSum = nums[arrBeginning] + nums[arrEnd];
+
+        while (arrEnd < nums.length) {
             if (currSum >= target) {
-                while (true) {
-                    if (currSum - nums[arrEnd + 1] >= target) {
-                        arrEnd += 1;
+                while (arrBeginning < arrEnd) {
+                    if (currSum - nums[arrBeginning] >= target) {
+                        arrBeginning += 1;
                     } else {
                         break;
                     }
@@ -30,9 +26,18 @@ public class TwoHundredAndNine {
                     length = arrEnd - arrBeginning + 1;
                 }
             }
+            arrBeginning += 1;
+            arrEnd += 1;
+
+            currSum = currSum - nums[arrBeginning - 1] + nums[arrEnd];
+            System.out.println(currSum);
         }
 
-        return length;
+        if (length == (nums.length + 1)) {
+            return 0;
+        } else {
+            return length;
+        }
     }
 
     public static void main(String[] args) {
