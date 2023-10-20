@@ -22,7 +22,9 @@ public class ThreeHundredEigthyThree {
         }
 
         for (var entry : noteLetterCounts.entrySet()) {
-            if (entry.getValue() != magazineLetterCounts.get(entry.getValue())) {
+            if (magazineLetterCounts.get(entry.getKey()) == null) {
+                return false;
+            } else if (entry.getValue() > magazineLetterCounts.get(entry.getKey())) {
                 return false;
             }
         }
@@ -31,6 +33,18 @@ public class ThreeHundredEigthyThree {
     }
 
     public static void main(String[] args) {
+        String ransomNote1 = "a";
+        String magazine1 = "b";
+        String ransomNote2 = "aa";
+        String magazine2 = "ab";
+        String ransomNote3 = "aa";
+        String magazine3 = "aab";
+        String ransomNote4 = "bgz";
+        String magazine4 = "efjbdfbdgfjhhaiigfhbaejahgfbbgbjagbddfgdiaigdadhcfcj";
 
+        // System.out.println(canConstruct(ransomNote1, magazine1));
+        // System.out.println(canConstruct(ransomNote2, magazine2));
+        // System.out.println(canConstruct(ransomNote3, magazine3));
+        System.out.println(canConstruct(ransomNote4, magazine4));
     }
 }
