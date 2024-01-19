@@ -7,3 +7,7 @@ Having trouble pushing code up tonight.
 2024.01.18
 
 Solved #36 but having trouble connecting through to github through the VPN. Will lool into that tomorrow I guess. 
+
+2024.01.19
+
+Started #228
