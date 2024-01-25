@@ -11,3 +11,7 @@ Solved #36 but having trouble connecting through to github through the VPN. Will
 2024.01.19
 
 Started #228
+
+2024.01.26
+
+Setting up Git on a new laptop.
