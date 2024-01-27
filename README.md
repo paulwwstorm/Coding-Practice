@@ -15,3 +15,7 @@ Started #228
 2024.01.26
 
 Setting up Git on a new laptop.
+
+2024.01.27
+
+Basic solution for #228
