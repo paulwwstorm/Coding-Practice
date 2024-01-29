@@ -19,3 +19,7 @@ Setting up Git on a new laptop.
 2024.01.27
 
 Basic solution for #228
+
+2024.01.29
+
+Turned out to be totally wrong about what was going on. The VPN wasn't blocking my attempts to connect, it wasn't tunneling them at all and so they were blocked. So turning the VPN on to all traffic fixed the problem. Now that I think about it it should also fix Spotify as well. Which is a nice plus!
