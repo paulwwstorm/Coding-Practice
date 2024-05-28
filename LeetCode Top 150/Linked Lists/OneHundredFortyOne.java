@@ -12,6 +12,7 @@ Class OneHundredFortyOne {
     public class Solution {
         public boolean hasCycle(ListNode head) {
             System.out.println(head.val);
+            System.out.println(head.next.val);
         }
     }
     
