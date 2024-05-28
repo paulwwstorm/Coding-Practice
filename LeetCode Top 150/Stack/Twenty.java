@@ -1,8 +1,4 @@
 class Twenty {
-class Solution {
-class Solution {
-    class Solution {
-    class Solution {
     public boolean isValid(String s) {
         Stack<Character> charStack = new Stack<>();
         System.out.println(s);
@@ -37,9 +33,6 @@ class Solution {
             return false;
         }
     }
-}
-
-}
 
     public static void main(String[] args) {
         System.out.println();
