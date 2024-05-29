@@ -6,13 +6,22 @@ Class OneHundredFortyOne {
         ListNode(int x) {
             val = x;
             next = null;
+            visited = false;
         }
     }
 
     public class Solution {
         public boolean hasCycle(ListNode head) {
-            System.out.println(head.val);
-            System.out.println(head.next.val);
+            currentNode = head;
+            while(true) {
+                if (currentNode.visited=false && currentNode.next != null) {
+                    currentNode=currentNode.next;
+                } else if (currentNode.visited=true) {
+                    return true;
+                } else if (currentNode.next==null) {
+                    return false
+                }
+            }
         }
     }
     
