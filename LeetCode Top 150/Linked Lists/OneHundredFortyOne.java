@@ -6,23 +6,36 @@ Class OneHundredFortyOne {
         ListNode(int x) {
             val = x;
             next = null;
-            visited = false;
         }
     }
 
     public class Solution {
+        ListNode[] visited = new ListNode[10000];
+    
         public boolean hasCycle(ListNode head) {
-            currentNode = head;
-            while(true) {
-                if (currentNode.visited=false && currentNode.next != null) {
-                    currentNode=currentNode.next;
-                } else if (currentNode.visited=true) {
-                    return true;
-                } else if (currentNode.next==null) {
-                    return false
+            if (head == null) {
+                return false;
+            }
+            ListNode currentNode = head;
+    
+            int count = 0;
+            while (true) {
+                if (currentNode.next == null) {
+                    return false;
                 }
+    
+                for (int i = 0; i < count; i++) {
+                    if (currentNode == visited[i]) {
+                        return true;
+                    }
+                }
+    
+                visited[count] = currentNode;
+                currentNode = currentNode.next;
+                count += 1;
             }
         }
+    
     }
     
     public static void main(String[] args) {
