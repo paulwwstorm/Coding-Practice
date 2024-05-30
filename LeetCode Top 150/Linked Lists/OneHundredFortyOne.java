@@ -1,6 +1,6 @@
-Class OneHundredFortyOne {
+class OneHundredFortyOne {
 //  Definition for singly-linked list.
-    class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
         ListNode(int x) {
@@ -8,37 +8,35 @@ Class OneHundredFortyOne {
             next = null;
         }
     }
-
-    public class Solution {
-        ListNode[] visited = new ListNode[10000];
     
-        public boolean hasCycle(ListNode head) {
-            if (head == null) {
+    public static boolean hasCycle(ListNode head) {
+        ListNode[] visited = new ListNode[10000];
+
+        if (head == null) {
+            return false;
+        }
+        ListNode currentNode = head;
+
+        int count = 0;
+        while (true) {
+            if (currentNode.next == null) {
                 return false;
             }
-            ListNode currentNode = head;
-    
-            int count = 0;
-            while (true) {
-                if (currentNode.next == null) {
-                    return false;
+
+            for (int i = 0; i < count; i++) {
+                if (currentNode == visited[i]) {
+                    return true;
                 }
-    
-                for (int i = 0; i < count; i++) {
-                    if (currentNode == visited[i]) {
-                        return true;
-                    }
-                }
-    
-                visited[count] = currentNode;
-                currentNode = currentNode.next;
-                count += 1;
             }
+
+            visited[count] = currentNode;
+            currentNode = currentNode.next;
+            count += 1;
         }
-    
     }
-    
+
     public static void main(String[] args) {
-        Solution();
+        ListNode head = new ListNode(0);
+        System.out.println(hasCycle(head));
     }
 }
