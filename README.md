@@ -28,3 +28,7 @@ Turned out to be totally wrong about what was going on. The VPN wasn't blocking 
 2024.01.31
 
 Solved #228
+
+2024.06.11
+
+Working on a PDF deepl translation fix
