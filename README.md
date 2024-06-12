@@ -32,3 +32,7 @@ Solved #228
 2024.06.11
 
 Working on a PDF deepl translation fix
+
+2024.06.12
+
+Well, the project is finished, but there are some large files preventing me from pushing things up
