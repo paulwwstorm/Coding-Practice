@@ -16,17 +16,25 @@ public class OneHundredNinetyNine {
         }
     }
     
-    public List<Integer> treeRightSide(TreeNode node, List<Integer> rightSideVals) {
+    public List<Integer> treeRightSide(TreeNode node, List<Integer> rightSideVals, int maxDepth, int currentDepth) {
         if (node != null) {
-            rightSideVals.add(node.val);
-            return treeRightSide(node.right, rightSideVals);
-        } else {
-            return rightSideVals;
+            currentDepth += 1;
+            if (currentDepth > maxDepth) {
+                rightSideVals.add(node.val);
+                maxDepth += 1;
+            }
+            rightSideVals = treeRightSide(node.right, rightSideVals, maxDepth, currentDepth);
+            
+            rightSideVals = treeRightSide(node.left, rightSideVals, madDepth, currentDepth);
         }
+            
+        return [rightSideVals, maxDepth];
+
     }
 
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> rightSideVals = new ArrayList<Integer>();
-        return treeRightSide(root, rightSideVals);
+        int depth = 0;
+        return treeRightSide(root, rightSideVals, depth, depth);
     }
 }
