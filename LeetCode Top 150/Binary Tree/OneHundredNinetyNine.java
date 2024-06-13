@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class OneHundredNinetyNine {
     // Definition for a binary tree node.
@@ -15,26 +16,30 @@ public class OneHundredNinetyNine {
             this.right = right;
         }
     }
-    
-    public List<Integer> treeRightSide(TreeNode node, List<Integer> rightSideVals, int maxDepth, int currentDepth) {
+
+    public Map.Entry<Integer, List<Integer>> treeRightSide(Map.Entry<Integer, List<Integer>> treeSide, TreeNode node, int currentDepth) {
+
         if (node != null) {
             currentDepth += 1;
-            if (currentDepth > maxDepth) {
-                rightSideVals.add(node.val);
-                maxDepth += 1;
+            if (currentDepth > treeSide.getKey()) {
+                List<Integer> updatedTreeSide = treeSide.getValue();
+                updatedTreeSide.add(node.val);
+                treeSide = Map.entry(treeSide.getKey() + 1, updatedTreeSide);
             }
-            rightSideVals = treeRightSide(node.right, rightSideVals, maxDepth, currentDepth);
-            
-            rightSideVals = treeRightSide(node.left, rightSideVals, madDepth, currentDepth);
+            treeSide = treeRightSide(treeSide, node.right, currentDepth);
+            treeSide = treeRightSide(treeSide, node.left, currentDepth);
         }
-            
-        return [rightSideVals, maxDepth];
+
+        return treeSide;
 
     }
+
 
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> rightSideVals = new ArrayList<Integer>();
         int depth = 0;
-        return treeRightSide(root, rightSideVals, depth, depth);
+
+        Map.Entry<Integer, List<Integer>> treeSide = Map.entry(depth, rightSideVals);
+        return treeRightSide(treeSide, root, depth).getValue();
     }
 }
