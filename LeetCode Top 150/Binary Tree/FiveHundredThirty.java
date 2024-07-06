@@ -24,15 +24,24 @@ class Solution {
 
         return values;
     }
-    
+
+    public int ListMinDifference(ArrayList<Integer> values) {
+        int minDiff = Math.abs(values.get(0) - values.get(1));
+
+        for (int i = 0; i < values.size() - 1; i++) {
+            if (Math.abs(values.get(i) - values.get(i + 1)) < minDiff) {
+                minDiff = Math.abs(values.get(i) - values.get(i + 1));
+            } 
+        }
+
+        return minDiff;
+    }
+
     public int getMinimumDifference(TreeNode root) {
         ArrayList<Integer> values = new ArrayList<Integer>();
         values = traverseDepth(root, values);
+        values.sort(null);
 
-        for (int i = 0; i < values.size(); i++) {
-            System.out.println(values.get(i));
-        }
-
-        return 1;
+        return ListMinDifference(values);
     }
 }
