@@ -5,28 +5,30 @@ public class TwoHundred {
             int landCount = 0;
             int islandCount = 0;
     
-            for (int i = 0; i < grid[0].length; i++) {
-                for (int j = 0; j < grid.length; j++) {
-                    if (grid[j][i] == "1".charAt(0)) {
-                        land[landCount] = new int[]{Character.getNumericValue(j),Character.getNumericValue(i)};
+            for (int i = 0; i < grid.length; i++) {
+                for (int j = 0; j < grid[0].length; j++) {
+                    if (grid[i][j] == "1".charAt(0)) {
+                        int[] newLand = {i, j};
+                        land[landCount] = newLand;
                         landCount++;
                     }
                 }
             }
     
-            System.out.println(String.valueOf(landCount));
+            // System.out.println(String.valueOf(landCount));
     
             for (int k = 0; k < landCount; k++) {
                 int[] currentLand = land[k];
-                if (landCount == 1) {
+                if (k == (landCount - 1)) {
                     return islandCount++;
                 };
-                
-                if ((currentLand[0] == land[k+1][0] - 1 ) && (true)) {
-                    System.out.println("True");
-                } 
+                System.out.println("[" + String.valueOf(currentLand[0]) + ", " + String.valueOf(currentLand[1]) + "]");
+                if ((currentLand[1] == land[k+1][1] - 1 ) && (true)) {
+                    landCount--;
+                    continue;
+                } else {
     
-                landCount--;
+                }
             }
     
             return islandCount;
