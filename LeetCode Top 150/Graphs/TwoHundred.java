@@ -15,19 +15,18 @@ public class TwoHundred {
                 }
             }
     
-            // System.out.println(String.valueOf(landCount));
-    
-            for (int k = 0; k < landCount; k++) {
+            for (int k = 0; k < landCount - 1; k++) {
                 int[] currentLand = land[k];
-                if (k == (landCount - 1)) {
-                    return islandCount++;
-                };
                 System.out.println("[" + String.valueOf(currentLand[0]) + ", " + String.valueOf(currentLand[1]) + "]");
-                if ((currentLand[1] == land[k+1][1] - 1 ) && (true)) {
-                    landCount--;
+                islandCount++;
+                if (k == (landCount - 2)) {
                     continue;
-                } else {
-    
+                }
+
+                land = landRemover(land, currentLand);
+                
+                for (l = 1; l < grid.length; l++) {
+                    if ((currentLand[0] == land[k+l][0] - 1 )
                 }
             }
     
