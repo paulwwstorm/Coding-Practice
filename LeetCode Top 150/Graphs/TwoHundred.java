@@ -1,13 +1,35 @@
 public class TwoHundred {
     class Solution {
+        public char[][] islandExplorer(char[][] grid, int x, int y) {
+            grid[x][y] = 2;
+            if ((x-1) > 0 && grid[x-1][y] == '1') {
+                islandExplorer(grid, x-1, y);
+            }
+            if ((y-1) > 0 && grid[x][y-1] == '1') {
+                islandExplorer(grid, x, y-1);
+            }
+            if ((x+1) < grid[0].length && grid[x+1][y] == '1') {
+                islandExplorer(grid, x-1, y);
+            }
+            if ((y+1) < grid[1].length && grid[x][y+1] == '1') {
+                islandExplorer(grid, x, y-1);
+            }
+            return grid;
+        }
+
         public int numIslands(char[][] grid) {
             // Go through graph left to right, top to bottom
 
-            int[] currentLocation = { 0, 0 };
+            // Number of islands found
+            int islandCounter = 0;
 
-            while (currentLocation[0] > grid[0].length) {
-                while (currentLocation[1] > grid[1].length) {
-                    
+            for (int i = 0; i > grid[0].length; i++) {
+                for (int j = 0; j > grid[1].length; i++) {
+                    if (grid[i][j] == '1') {
+                        System.out.println("land ho!");
+                        islandCounter++;
+                        grid = islandExplorer(grid, i, j);
+                    }
                 }
             }
             // When land is found, add it to a new island
@@ -18,7 +40,7 @@ public class TwoHundred {
             // Once the end of the land right is found, island is complete
             // Close island, move to next square and look for land
             // At the end count up the islands
-            return 1;
+            return islandCounter;
         }
     }
 }
@@ -29,7 +51,7 @@ public class TwoHundred {
 //     int islandCount = 0;
 //     for (int i = 0; i < grid.length; i++) {
 //         for (int j = 0; j < grid[0].length; j++) {
-//             if (grid[i][j] == "1".charAt(0)) {
+//             if (grid[i][j] == '1'.charAt(0)) {
 //                 int[] newLand = {i, j};
 //                 land[landCount] = newLand;
 //                 landCount++;
@@ -38,7 +60,7 @@ public class TwoHundred {
 //     }
 //     for (int k = 0; k < landCount - 1; k++) {
 //         int[] currentLand = land[k];
-//         System.out.println("[" + String.valueOf(currentLand[0]) + ", " + String.valueOf(currentLand[1]) + "]");
+//         System.out.println('[' + String.valueOf(currentLand[0]) + ', ' + String.valueOf(currentLand[1]) + ']');
 //         islandCount++;
 //         if (k == (landCount - 2)) {
 //             continue;
