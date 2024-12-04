@@ -48,3 +48,7 @@ Unfortunately, two weeks of vacation did nothing to help and I am still lost in 
 2024.11.25
 
 Taking down unused AWS services
+
+2024.12.04
+
+Taking down AWS services, I thihk I have everything down now...
