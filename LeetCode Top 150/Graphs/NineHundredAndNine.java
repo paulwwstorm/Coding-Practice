@@ -3,12 +3,14 @@ public class NineHundredAndNine {
         public int endCheck(int currLocation, int endpoint, int[][] board, int moveCounter) {
             System.out.println("Endcheck initiated");
             System.out.println(String.valueOf(currLocation));
-            if (currLocation < endpoint && (currLocation + 6) >= endpoint) {
-                moveCounter++;
-            } else {
-                int bestMove = endCheck((currLocation + 6), endpoint, board, moveCounter + 1);
+            // if (currLocation + 6 >= endpoint) {
+            //     moveCounter++;
+            if (currLocation < endpoint) {
+                // int bestMove = endCheck((currLocation + 6), endpoint, board, moveCounter + 1);
+                int bestMove = endpoint;
+                int highestRoll = 0;
     
-                for (int i = 1; i < 7; i++) {
+                for (int i = 6; i > 0; i--) {
                     Boolean oddRow = (currLocation / board[0].length) % 2 == 0;
                     int currentMove = 0;
                     int currentRoll = endpoint;
@@ -20,10 +22,13 @@ public class NineHundredAndNine {
                         board[currLocation / board[0].length][(currLocation + i) % board[0].length] = -1;
                     }
     
-                    System.out.println(String.valueOf(currentMove));
+                    //System.out.println(String.valueOf(currentMove));
     
                     if (currentMove > 0) {
                         currentRoll = endCheck(currentMove, endpoint, board, moveCounter + 1);
+                    } else if (i > highestRoll) {
+                        currentRoll = endCheck(currLocation + i, endpoint, board, moveCounter + 1);
+                        highestRoll = i;
                     }
                     
                     if (currentRoll < bestMove) {
