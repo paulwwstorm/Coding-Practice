@@ -52,3 +52,7 @@ Taking down unused AWS services
 2024.12.04
 
 Taking down AWS services, I thihk I have everything down now...
+
+2024.12.14
+
+Stuck, moving on on Monday. 
