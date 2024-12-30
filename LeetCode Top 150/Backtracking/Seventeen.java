@@ -28,7 +28,7 @@ public class Seventeen {
             }
         }
 
-        return String.valueOf(letters[digit][marker]) + letterCombo ;
+        return String.valueOf(letters[digit][marker]) + letterCombo ; 
     }
 
     // public void  List<String> letterCombinations(String digits) {
