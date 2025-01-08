@@ -13,22 +13,23 @@ public class Seventeen {
     public static String[] letterBuilder(String[][] letters, int[] digits, int marker) {
     
         if (marker + 1 < digits.length) {
-            String[] letterOptions;
+            String[] letterOptions = new String[digits.length*letters[marker].length];
             for (int j = 0; j < letters[marker].length; j++) {
                 letterOptions[j] = letters[marker][j];
             }
         } else {
             String[] currentOptions = letterBuilder(letters, digits, marker + 1);
-            String[currentOptions.length*letters[marker].length] letterOptions;
+            String[] letterOptions = new String[currentOptions.length*letters[marker].length];
             for (int k = 0; k < letters[marker].length; k++) {
                 for (int l = 0; l < letterOptions.length; l++) {
-                    currentOptions[] = letters[marker][j];
+                    currentOptions[l] = letters[marker][k];
                 }
                 letterOptions[k] = letters[marker][k];
             }
         }
 
-        return String.valueOf(letters[digit][marker]) + letterCombo ; 
+        // return String.valueOf(letters[digit][marker]) + letterCombo; 
+        return new String[1];
     }
 
     // public void  List<String> letterCombinations(String digits) {
