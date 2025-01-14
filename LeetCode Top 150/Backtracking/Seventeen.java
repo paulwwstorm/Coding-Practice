@@ -20,7 +20,7 @@ public class Seventeen {
             }
         } else {
             List<String> currentOptions = letterBuilder(letters, digits, marker + 1);
-            for (int k = 0; k < letters[marker].length; k++) {
+            for (int k = 0; k < letters[digits[marker]].length; k++) {
                 for (int l = 0; l < letterOptions.size(); l++) {
                     currentOptions.add(letters[marker][k]);
                 }
