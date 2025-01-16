@@ -1,29 +1,27 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
     public static List<String> letterBuilder(String[][] letters, int[] digits, int marker) {
         List<String> letterOptions = new ArrayList<>();
-        if (marker + 1 >= digits.length) {
+        if (marker + 1 == digits.length) {
             for (int j = 0; j < letters[digits[marker] - 2].length; j++) {
                 letterOptions.add(letters[digits[marker] - 2][j]);
             }
-            // System.out.println(Arrays.toString(letterOptions.toArray()));
-        } else {
+        } else if (marker + 1 < digits.length) {
             letterOptions = letterBuilder(letters, digits, marker + 1);
             List<String> newLetterOptions = new ArrayList<>();
-            // System.out.println(String.valueOf(digits[marker]));
-            // System.out.println(Arrays.toString(letterOptions.toArray()));
             for (int k = 0; k < letters[digits[marker] - 2].length; k++) {
                 String currLetter = letters[digits[marker] - 2][k];
-                // System.out.println(currLetter);
                 for (int l = 0; l < letterOptions.size(); l++) {
                     newLetterOptions.add(currLetter + letterOptions.get(l));
                     System.out.println(currLetter + letterOptions.get(l));
                 }
-                // letterOptions.add(letters[marker][k]);
             }
 
-            if (marker == 0) {
-                return newLetterOptions;
-            }
+            
+            return newLetterOptions;
+
         }
 
         return letterOptions;
@@ -38,7 +36,7 @@ class Solution {
         {"m","n","o"},
         {"p","q","r","s"},
         {"t","u","v"},
-        {"w","x","y"}
+        {"w","x","y","z"}
         };
 
         int[] currentDial = new int[digits.length()];
@@ -47,13 +45,7 @@ class Solution {
             currentDial[i] = digits.charAt(i) - '0';
         }
 
-        List<String> currentOptions = new ArrayList<>();
-
-        if (digits.length() != 0) {
-            currentOptions = letterBuilder(letters, currentDial, 0);
-        }
-
-        return currentOptions;
+        return letterBuilder(letters, currentDial, 0);;
         
     }
 }
