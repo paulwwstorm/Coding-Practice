@@ -14,37 +14,37 @@
  * }
  */
 class Solution {
-    public void divideAndContinue(int[] nums, TreeNode currNode) {
+    public TreeNode divideAndContinue(int[] nums, TreeNode prevNode) {
+        TreeNode currNode = new TreeNode();
+
         if (nums.length > 1) {
-            TreeNode nextNode = new TreeNode();
-            nextNode.val = nums[nums.length/2];
-            if (nextNode.val > currNode.val) {
-                currNode.right = nextNode;
-            } else {
-                currNode.left = nextNode;
+            currNode.val = nums[nums.length/2];
+ 
+            int[] firstHalf = Arrays.copyOfRange(nums, 0, nums.length/2);
+            divideAndContinue(firstHalf, currNode);
+
+            if (nums.length > 2) {
+                int[] secondHalf =  Arrays.copyOfRange(nums, (nums.length/2) + 1, nums.length);
+                divideAndContinue(secondHalf, currNode);
             }
             
-            int[] firstHalf = Arrays.copyOfRange(nums, 0, (nums.length/2) - 1);
-            int[] secondHalf =  Arrays.copyOfRange(nums, (nums.length/2) + 1, nums.length);
-
-            divideAndContinue(firstHalf, nextNode);
-            divideAndContinue(secondHalf, nextNode);
-        } else if (nums.length > 0) {
-            TreeNode leftNode = new TreeNode();
-            leftNode.val = nums[0];
-            // TreeNode rightNode = new TreeNode();
-            // rightNode.val = nums[1];
+        } else if (nums.length == 1) {
+            currNode.val = nums[0];
         }
 
+        if (prevNode != null) {
+            if (prevNode.val < currNode.val) {
+                prevNode.right = currNode;
+            } else {
+                prevNode.left = currNode;
+            }
+        }
 
+        return currNode;
     }
 
     public TreeNode sortedArrayToBST(int[] nums) {
-        System.out.println(String.valueOf(9/2));
-
-        TreeNode root = new TreeNode();
-    
-        divideAndContinue(nums, root);
+        TreeNode root = divideAndContinue(nums, null);
 
         return root;
     }
