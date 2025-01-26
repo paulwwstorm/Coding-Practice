@@ -30,9 +30,7 @@ public class FiftyThree {
                         max = curr;
                     }
                 }
-    
-                System.out.println(String.valueOf(curr));
-            }
+                }
     
             return max;
         }
