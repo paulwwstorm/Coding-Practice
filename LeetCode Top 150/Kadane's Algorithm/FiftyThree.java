@@ -36,3 +36,34 @@ public class FiftyThree {
         }
     }
 }
+
+// Rewritten using a top answer from LeetCode
+// I think one of the big mistakes I made
+// Was thinking that negative numbers needed to be handled separately
+// I'd like to think the underlying logic is the same
+// I guess the issue I ran into was that I was resetting
+// curr = 0
+// And then because of that curr was greater than max
+// When all numbers are negative
+// The correct method is to be sure to add 
+// The current value to the sum before comparing to max
+
+// public int maxSubArray(int[] nums) {
+//     int max = Integer.MIN_VALUE;
+//     int curr = 0;
+
+//     for (int i = 0; i < nums.length; i++) {
+
+//         curr += nums[i];
+//         if (curr > max) {
+//             max = curr;
+//         }
+
+//         if (curr < 0) {
+//             curr = 0;
+//         }
+
+//     }
+
+//     return max;
+// }
