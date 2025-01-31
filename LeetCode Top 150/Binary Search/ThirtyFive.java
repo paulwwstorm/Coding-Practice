@@ -1,34 +1,25 @@
 class Solution {
-    public int insertSearchHelper(int[] nums, int target, int leftPointer, int rightPointer) {
+    public int searchInsert(int[] nums, int target) {
+        int leftPointer = 0;
+        int rightPointer = nums.length - 1;
         int midPoint = (rightPointer-leftPointer)/2;
-        int midValue = nums[]
 
-        if (midPoint > 0) {
+        while (leftPointer < rightPointer) {
+            midPoint = ((rightPointer-leftPointer)/2 + leftPointer);
 
-        } 
-        if (nums.length > 1) {
-            int midValue = nums[(nums.length/2) + 1];
-            if (midValue == target) {
-                return (nums.length/2) + 1;
-            } else if (target < midValue) {
-                int[] nextSearch = Arrays.copyOfRange(nums, 0, nums.length/2);
-            } else if (target > midValue) {
-                int nextSearch = Arrays.copyOfRange(nums,((nums.legnth/2) + 2), nums.length);
+            if (nums[midPoint] == target) {
+                return midPoint;
+            } else if (nums[midPoint] > target) {
+                rightPointer = midPoint - 1;
+            } else {
+                leftPointer = midPoint + 1;
             }
         }
-        
 
-
-    //If only one element
-    //And not target
-    //If element larger
-    //Insert index to left
-    //Otherwise
-    //Insert index to the left
-
-    //I think this will work...
-}
-
-public int searchInsert(int[] nums, int target) {
-    return insertSearchHelper(nums, target, 0, (nums.length -1));
+        if (nums[leftPointer] > target || nums[leftPointer] == target) {
+            return leftPointer;
+        } else {
+            return leftPointer + 1;
+        }
+    }
 }
