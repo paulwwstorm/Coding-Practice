@@ -1,43 +1,45 @@
 class Solution {
-    public int findKthLargest(int[] nums, int k) {
-        int max = Integer.MIN_VALUE;
+    public int searchInsert(int[] nums, int target) {
+        int leftPointer = 0;
+        int rightPointer = nums.length - 1;
+        int midPoint = (rightPointer-leftPointer)/2;
 
-        for (int j = 0; j < k; j++) {
-            max = nums[0];
-            int maxLoc = 0;
+        while (leftPointer < rightPointer) {
+            midPoint = ((rightPointer-leftPointer)/2 + leftPointer);
 
-            for (int i = 0; i < nums.length; i++) {
-                if (nums[i] > max) {
-                    max = nums[i];
-                    maxLoc = i;
-                }
-            }
-
-            System.out.println("max");
-            System.out.println(String.valueOf(max));
-            System.out.println(String.valueOf(maxLoc));
-            System.out.println(String.valueOf(nums.length));
-
-            if (maxLoc == (nums.length - 1)) {
-                int[] newNums = new int[nums.length - 1];
-                // System.arraycopy(nums, 0, nums, 0, 0);
-                for (int m = 0; m < nums.length - 1; m++) {
-                    newNums[m] = nums[m];
-                }
-                nums = newNums;
+            if (nums[midPoint] == target) {
+                return midPoint;
+            } else if (nums[midPoint] > target) {
+                rightPointer = midPoint - 1;
             } else {
-                System.arraycopy(nums, maxLoc + 1, nums, maxLoc, nums.length - 1 - maxLoc);
-            }
-
-            for (int m = 0; m < nums.length; m++) {
-                System.out.println(String.valueOf(nums[m]));
+                leftPointer = midPoint + 1;
             }
         }
 
-        // for (int m = 0; m < nums.length; m++) {
-        //     System.out.println(String.valueOf(nums[m]));
-        // }
+        if (nums[leftPointer] > target || nums[leftPointer] == target) {
+            return leftPointer;
+        } else {
+            return leftPointer + 1;
+        }
+    }
+
+    public int findKthLargest(int[] nums, int k) {
+        int[] heap = new int[k];
+        Arrays.fill(heap, Integer.MIN_VALUE);
+
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] > heap[0]) {
+                int pos = 0;
+                pos = searchInsert(heap, nums[j]) - 1;
+
+                for (int m = 0; m < pos; m++) {
+                    heap[m] = heap[m + 1];
+                }
+
+                heap[pos] = nums[j];
+            }
+        }
         
-        return max;
+        return heap[0];
     }
 }
