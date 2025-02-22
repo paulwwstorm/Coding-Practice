@@ -16,8 +16,6 @@ class Solution {
             }
 
             return true;
-        } else if (x >= 0) {
-            return true;
         }
 
         return false;  
