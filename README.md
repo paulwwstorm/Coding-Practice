@@ -56,3 +56,7 @@ Taking down AWS services, I thihk I have everything down now...
 2024.12.14
 
 Stuck, moving on on Monday. 
+
+2025.02.28
+
+Brainstorming a bigger project
