@@ -62,7 +62,7 @@ class Solution {
                     right = paths[i-1][j - 1];
                 }
                 
-                if (j < paths[i-1].length - 1) {
+                if (j < paths[i-1].length) {
                     left = paths[i-1][j];
                 }
                 int shortest = right < left ? right : left;
