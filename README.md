@@ -60,3 +60,7 @@ Stuck, moving on on Monday.
 2025.02.28
 
 Brainstorming a bigger project
+
+2025.04.03
+
+Researching project #REM
