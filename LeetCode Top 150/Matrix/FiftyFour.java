@@ -7,48 +7,67 @@ class Solution {
         List<Integer> output = new ArrayList<Integer>();
         int currLoc = 0;
 
-        while (true) {}
+        while (true) {
+            System.out.println("next round:");
+            System.out.println(String.valueOf(currDirection));
+            System.out.println(String.valueOf(xCoord));
+            System.out.println(String.valueOf(yCoord));
+
             if (currDirection == 0) {
-                if (visited.indexOf(String.valueOf(xCoord + 1) + "," + String.valueOf(yCoord)) < 0) {
-                    xCoord++;
+                if (visited.indexOf(String.valueOf(xCoord) + "," + String.valueOf(yCoord)) < 0 & xCoord < matrix.length) {
+                    System.out.println(String.valueOf(matrix[yCoord][xCoord]));
                     output.add(matrix[yCoord][xCoord]);
+                    visited.add(String.valueOf(xCoord) + "," + String.valueOf(yCoord));
+                    xCoord++;
                     currLoc++;
-                    visisted.add(String.valueOf(xCoord + 1) + "," + String.valueOf(yCoord)))
+                } else if (xCoord >= matrix.length) {
+                    xCoord--;
+                    currDirection = 1;
                 } else {
                     currDirection = 1;
                 }
             } else if (currDirection == 1) {
-                if (visited.indexOf(String.valueOf(xCoord + 1) + "," + String.valueOf(yCoord)) < 0) {
-                    xCoord++;
+                if (visited.indexOf(String.valueOf(xCoord) + "," + String.valueOf(yCoord)) < 0 & yCoord < matrix[0].length) {
+                    System.out.println(String.valueOf(matrix[yCoord][xCoord]));
                     output.add(matrix[yCoord][xCoord]);
+                    visited.add(String.valueOf(xCoord) + "," + String.valueOf(yCoord));
+                    yCoord++;
                     currLoc++;
-                    visisted.add(String.valueOf(xCoord + 1) + "," + String.valueOf(yCoord)))
+                } else if (yCoord >= matrix[0].length) {
+                    yCoord--;
+                    currDirection = 2;
                 } else {
-                    currDirection = 1;
+                    currDirection = 2;
                 }
-            } (currDirection == 2) {
-                if (visited.indexOf(String.valueOf(xCoord + 1) + "," + String.valueOf(yCoord)) < 0) {
-                    xCoord++;
+            } else if (currDirection == 2) {
+                if (visited.indexOf(String.valueOf(xCoord) + "," + String.valueOf(yCoord)) < 0 & xCoord >= 0) {
+                    System.out.println(String.valueOf(matrix[yCoord][xCoord]));
                     output.add(matrix[yCoord][xCoord]);
+                    visited.add(String.valueOf(xCoord) + "," + String.valueOf(yCoord));
+                    xCoord--;
                     currLoc++;
-                    visisted.add(String.valueOf(xCoord + 1) + "," + String.valueOf(yCoord)))
+                } else if (xCoord < 0) {
+                    xCoord++;
+                    currDirection = 3;
                 } else {
-                    currDirection = 1;
+                    currDirection = 3;
                 }
-            } (currDirection == 3) {
-                if (visited.indexOf(String.valueOf(xCoord + 1) + "," + String.valueOf(yCoord)) < 0) {
-                    xCoord++;
+            } else if (currDirection == 3) {
+                if (visited.indexOf(String.valueOf(xCoord) + "," + String.valueOf(yCoord)) < 0) {
+                    System.out.println(String.valueOf(matrix[yCoord][xCoord]));
                     output.add(matrix[yCoord][xCoord]);
+                    visited.add(String.valueOf(xCoord) + "," + String.valueOf(yCoord));
+                    yCoord--;
                     currLoc++;
-                    visisted.add(String.valueOf(xCoord + 1) + "," + String.valueOf(yCoord)))
                 } else {
-                    currDirection = 1;
+                    currDirection = 0;
                 }
             }
 
-            if (currLoc == (matrix.length * matrix[0].length)) {
-                return output
+            if (currLoc + 1 == (matrix.length * matrix[0].length)) {
+                return output;
             }
+        }
         
     }
 }
