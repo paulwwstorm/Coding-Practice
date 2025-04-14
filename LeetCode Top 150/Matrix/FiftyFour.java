@@ -1,8 +1,8 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         int currDirection = 0;
-        int xCoord = 0;
         int yCoord = 0;
+        int xCoord = 0;
         List<String> visited = new ArrayList<String>();
         List<Integer> output = new ArrayList<Integer>();
         int currLoc = 0;
@@ -10,61 +10,60 @@ class Solution {
         while (true) {
             System.out.println("next round:");
             System.out.println(String.valueOf(currDirection));
-            System.out.println(String.valueOf(xCoord));
             System.out.println(String.valueOf(yCoord));
+            System.out.println(String.valueOf(xCoord));
 
             if (currDirection == 0) {
-                if (visited.indexOf(String.valueOf(xCoord) + "," + String.valueOf(yCoord)) < 0 & xCoord < matrix.length) {
-                    System.out.println(String.valueOf(matrix[yCoord][xCoord]));
-                    output.add(matrix[yCoord][xCoord]);
-                    visited.add(String.valueOf(xCoord) + "," + String.valueOf(yCoord));
-                    xCoord++;
+                if (visited.indexOf(String.valueOf(yCoord) + "," + String.valueOf(xCoord)) < 0 & yCoord < matrix[0].length) {
+                    System.out.println(String.valueOf(matrix[xCoord][yCoord]));
+                    output.add(matrix[xCoord][yCoord]);
+                    visited.add(String.valueOf(yCoord) + "," + String.valueOf(xCoord));
+                    yCoord++;
                     currLoc++;
-                } else if (xCoord >= matrix.length) {
-                    xCoord--;
-                    currDirection = 1;
                 } else {
+                    yCoord--;
+                    xCoord++;
                     currDirection = 1;
                 }
             } else if (currDirection == 1) {
-                if (visited.indexOf(String.valueOf(xCoord) + "," + String.valueOf(yCoord)) < 0 & yCoord < matrix[0].length) {
-                    System.out.println(String.valueOf(matrix[yCoord][xCoord]));
-                    output.add(matrix[yCoord][xCoord]);
-                    visited.add(String.valueOf(xCoord) + "," + String.valueOf(yCoord));
-                    yCoord++;
+                if (visited.indexOf(String.valueOf(yCoord) + "," + String.valueOf(xCoord)) < 0 & xCoord < matrix.length) {
+                    System.out.println(String.valueOf(matrix[xCoord][yCoord]));
+                    output.add(matrix[xCoord][yCoord]);
+                    visited.add(String.valueOf(yCoord) + "," + String.valueOf(xCoord));
+                    xCoord++;
                     currLoc++;
-                } else if (yCoord >= matrix[0].length) {
+                } else {
+                    xCoord--;
                     yCoord--;
                     currDirection = 2;
-                } else {
-                    currDirection = 2;
-                }
+                }                    
             } else if (currDirection == 2) {
-                if (visited.indexOf(String.valueOf(xCoord) + "," + String.valueOf(yCoord)) < 0 & xCoord >= 0) {
-                    System.out.println(String.valueOf(matrix[yCoord][xCoord]));
-                    output.add(matrix[yCoord][xCoord]);
-                    visited.add(String.valueOf(xCoord) + "," + String.valueOf(yCoord));
-                    xCoord--;
+                if (visited.indexOf(String.valueOf(yCoord) + "," + String.valueOf(xCoord)) < 0 & yCoord >= 0) {
+                    System.out.println(String.valueOf(matrix[xCoord][yCoord]));
+                    output.add(matrix[xCoord][yCoord]);
+                    visited.add(String.valueOf(yCoord) + "," + String.valueOf(xCoord));
+                    yCoord--;
                     currLoc++;
-                } else if (xCoord < 0) {
-                    xCoord++;
-                    currDirection = 3;
-                } else {
+                }  else {
+                    yCoord++;
+                    xCoord--;
                     currDirection = 3;
                 }
             } else if (currDirection == 3) {
-                if (visited.indexOf(String.valueOf(xCoord) + "," + String.valueOf(yCoord)) < 0) {
-                    System.out.println(String.valueOf(matrix[yCoord][xCoord]));
-                    output.add(matrix[yCoord][xCoord]);
-                    visited.add(String.valueOf(xCoord) + "," + String.valueOf(yCoord));
-                    yCoord--;
+                if (visited.indexOf(String.valueOf(yCoord) + "," + String.valueOf(xCoord)) < 0) {
+                    System.out.println(String.valueOf(matrix[xCoord][yCoord]));
+                    output.add(matrix[xCoord][yCoord]);
+                    visited.add(String.valueOf(yCoord) + "," + String.valueOf(xCoord));
+                    xCoord--;
                     currLoc++;
                 } else {
+                    xCoord++;
+                    yCoord++;
                     currDirection = 0;
                 }
             }
 
-            if (currLoc + 1 == (matrix.length * matrix[0].length)) {
+            if (currLoc == (matrix.length * matrix[0].length)) {
                 return output;
             }
         }
