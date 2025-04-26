@@ -68,3 +68,7 @@ Researching project #REM
 2025.04.04
 
 Researching project #REM
+
+2025.04.26
+
+creating LeetCode Anki cards
