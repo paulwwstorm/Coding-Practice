@@ -76,3 +76,7 @@ creating LeetCode Anki cards
 2025.05.01
 
 creating LeetCode Anki cards
+
+2025.05.02
+
+Reviewing #80 and #169 - Actually kind of fun. Felt very sastifying when I was able to write out the answer to #80 directly wihtout making any mistakes. 
