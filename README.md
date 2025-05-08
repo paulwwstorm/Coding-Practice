@@ -84,3 +84,7 @@ Reviewing #80 and #169 - Actually kind of fun. Felt very sastifying when I was a
 2025.05.06
 
 Creating LeetCode Anki cards
+
+2025.05.08
+
+Review LeetCode Anki cards
