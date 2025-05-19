@@ -19,23 +19,11 @@ class Solution {
         if ((p == null && q != null) || (p != null && q == null)) return false;
         boolean sameNode = p.val == q.val;
         if (sameNode) {
-            if (p.left != null && q.left == null) {
-                sameNode = false;
-            } else if (p.left == null && q.left != null) {
-                sameNode = false;
-            } else if (p.left != null && p.left != null) {
-                sameNode = isSameNode(p.left, q.left);
-            }
+            sameNode = isSameNode(p.left, q.left);
         }
 
         if (sameNode) {
-            if (p.right != null && q.right == null) {
-                sameNode = false;
-            } else if (p.right == null && q.right != null) {
-                sameNode = false;
-            } else if (p.right != null && p.right != null) {
-                sameNode = isSameNode(p.right, q.right);
-            }
+            sameNode = isSameNode(p.right, q.right);
         }
 
         return sameNode;
