@@ -100,3 +100,7 @@ Adding Anki cards
 2025.05.17
 
 Studying #380
+
+2025.05.25
+
+Making Anki cards
