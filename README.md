@@ -104,3 +104,7 @@ Studying #380
 2025.05.25
 
 Making Anki cards
+
+2025.05.28
+
+Making Anki cards
