@@ -108,3 +108,7 @@ Making Anki cards
 2025.05.28
 
 Making Anki cards
+
+2025.06.06
+
+Making Anki Cards
