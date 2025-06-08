@@ -112,3 +112,7 @@ Making Anki cards
 2025.06.06
 
 Making Anki Cards
+
+2025.06.08
+
+Flashcard review
