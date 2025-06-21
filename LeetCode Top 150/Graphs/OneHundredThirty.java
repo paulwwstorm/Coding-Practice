@@ -1,20 +1,26 @@
-class Solution {
-    public void islandExplore(char[] board, int x, int y, HashMap peninsulas) {
-        HashMap<Integer, String> currentLand = new HashMap<Integer, String>();
-        int[][] toConvert = new int[][];
-        boolean isIsland = true;
+import java.util.HashMap;
 
-        while(true) {
-            if (currLoc[0] - 1 < 0 ||
-                currLoc[0] + 1 >= board[0].length ||
-                currLoc[1] - 1 < 0 ||
-                currLoc[1] + 1 >= board[1].length
-            ) {
-                isIsland = false;
-            } else ()
+class Solution {
+    public HashMap<Boolean, HashMap<Integer, String[]>> islandExplore(char[][] board, int x, int y, HashMap<Boolean, HashMap<Integer, int[]>> land) {
+        if (land.containsKey(true)) {
+            land.get(true).put(land.get(true).size(), new int[]{x,y})
+        } else {
+            land.get(false).put(land.get(true).size(), new int[]{x,y});
         }
 
+        if (x - 1 < 0 ||
+            x + 1 >= board[0].length ||
+            y - 1 < 0 ||
+            y + 1 >= board.length
+        ) {
+            if (land.containsKey(false)) {
+                int[][] penisula = land.get(false);
+                land.clear();
+                land.put(true, penisula);
+            }
+        }
 
+        if ()
     }
     public void solve(char[][] board) {
         HashMap<Integer, String> peninsulas = new HashMap<Integer, String>();
