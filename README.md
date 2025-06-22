@@ -116,3 +116,5 @@ Making Anki Cards
 2025.06.08
 
 Flashcard review
+
+Lots of work next week
