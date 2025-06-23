@@ -1,33 +1,42 @@
-import java.util.HashMap;
-
 class Solution {
-    public HashMap<Boolean, HashMap<Integer, String[]>> islandExplore(char[][] board, int x, int y, HashMap<Boolean, HashMap<Integer, int[]>> land) {
-        if (land.containsKey(true)) {
-            land.get(true).put(land.get(true).size(), new int[]{x,y})
-        } else {
-            land.get(false).put(land.get(true).size(), new int[]{x,y});
+    public void islandExplore(char[][] board, int x, int y) {
+        board[x][y] = 'Y';
+
+
+        if (x - 1 >= 0 && board[x-1][y] == 'O') {
+            islandExplore(board, x-1, y);
         }
 
-        if (x - 1 < 0 ||
-            x + 1 >= board[0].length ||
-            y - 1 < 0 ||
-            y + 1 >= board.length
-        ) {
-            if (land.containsKey(false)) {
-                int[][] penisula = land.get(false);
-                land.clear();
-                land.put(true, penisula);
+        if (x + 1 < board.length && board[x+1][y] == 'O') {
+            islandExplore(board, x+1, y);
+        }
+
+        if (y - 1 >= 0 && board[x][y-1] == 'O') {
+            islandExplore(board, x, y-1);
+        }
+
+        if (y + 1 < board[0].length && board[x][y+1] == 'O') {
+            islandExplore(board, x, y+1);
+        }
+    }
+
+    public void solve(char[][] board) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (i == 0 || i + 1 == board.length || j == 0 || j + 1 == board[0].length) {
+                    if (board[i][j] == 'O') {
+                        islandExplore(board, i, j);
+                    }
+                }
             }
         }
 
-        if ()
-    }
-    public void solve(char[][] board) {
-        HashMap<Integer, String> peninsulas = new HashMap<Integer, String>();
-        for (int i = 0; i < char.length; i++) {
-            for (int j = 0; j < char[i].lenght; j++) {
-                if (char[i][j] == "O" && penisulas.containsValue()) {
-                    islandExplore(board, char[i][j], peninsulas);
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (board[i][j] == 'O') {
+                    board[i][j] = 'X';
+                } else if (board[i][j] == 'Y') {
+                    board[i][j] = 'O';
                 }
             }
         }
