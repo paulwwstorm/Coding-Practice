@@ -31,28 +31,38 @@ class WordDictionary {
 
         currNode.terminalNode = true;
     }
+
+    public boolean checkLevel(TrieNode currNode, String word, int pos) {
+        char currChar = word.charAt(pos);
+
+        if (currNode.terminalNode == true) {
+            return true;
+        }
+
+        if (currChar == '.') {
+            Boolean found = false;
+            for (int i = 0; i < 26; i++) {
+                if (currNode.children[i] != null) {
+                    Boolean path = checkLevel(currNode.children[i], word, pos++);
+                    if (path) {
+                        found = path;
+                    }
+                }
+            }
+
+            return found;
+        } else {
+            if (currNode.children[currChar - 'a'] == null) {
+                return false;
+            } else {
+                return checkLevel(currNode.children[currChar - 'a'], word, pos++);
+            }
+        }
+    }
     
     public boolean search(String word) {
         TrieNode currNode = root;
-
-        for (int i = 0; i < word.length(); i++) {
-            char currChar = word.charAt(i);
-
-            if (currChar == '.') {
-                String remainder = word.substring(i+1, word.length());
-                for (int j = 0; j < 26; j++) {
-                    return search(remainder);
-                }
-            } else {
-                if (currNode.children[currChar - 'a'] == null) {
-                    return false;
-                }
-
-                currNode = currNode.children[currChar - 'a'];
-            }
-        }
-
-        return currNode.terminalNode;
+        return checkLevel(currNode, word, 0);    
     }
 }
 
