@@ -31,28 +31,50 @@ class WordDictionary {
 
         currNode.terminalNode = true;
     }
-    
-    public boolean search(String word) {
-        TrieNode currNode = root;
 
-        for (int i = 0; i < word.length(); i++) {
-            char currChar = word.charAt(i);
+    public boolean checkLevel(TrieNode currNode, String word, int pos) {
+        char currChar = word.charAt(pos);
 
+        if (pos == word.length()-1) {
             if (currChar == '.') {
-                String remainder = word.substring(i+1, word.length());
-                for (int j = 0; j < 26; j++) {
-                    return search(remainder);
+                for (int i = 0; i < 26; i++) {
+                    if (currNode.children[i] != null) {
+                        if (currNode.children[i].terminalNode) {
+                            return true;
+                        }
+                    }
                 }
+                return false;
+            }
+            if (currNode.children[currChar - 'a'] != null && currNode.children[currChar - 'a'].terminalNode) {
+                return true;
+            }
+        } else if (currChar == '.') {
+            for (int i = 0; i < 26; i++) {
+                if (currNode.children[i] != null) {
+                    int next = pos+1;
+                    Boolean path = checkLevel(currNode.children[i], word, next);
+                    if (path) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        } else {
+            if (currNode.children[currChar - 'a'] == null) {
+                return false;
             } else {
-                if (currNode.children[currChar - 'a'] == null) {
-                    return false;
-                }
-
-                currNode = currNode.children[currChar - 'a'];
+                pos++;
+                return checkLevel(currNode.children[currChar - 'a'], word, pos);
             }
         }
 
-        return currNode.terminalNode;
+        return false;
+    }
+    
+    public boolean search(String word) {
+        TrieNode currNode = root;
+        return checkLevel(currNode, word, 0);    
     }
 }
 
