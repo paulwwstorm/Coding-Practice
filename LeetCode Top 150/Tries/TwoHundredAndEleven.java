@@ -35,29 +35,41 @@ class WordDictionary {
     public boolean checkLevel(TrieNode currNode, String word, int pos) {
         char currChar = word.charAt(pos);
 
-        if (currNode.terminalNode == true) {
-            return true;
-        }
-
-        if (currChar == '.') {
-            Boolean found = false;
+        if (pos == word.length()-1) {
+            if (currChar == '.') {
+                for (int i = 0; i < 26; i++) {
+                    if (currNode.children[i] != null) {
+                        if (currNode.children[i].terminalNode) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            if (currNode.children[currChar - 'a'] != null && currNode.children[currChar - 'a'].terminalNode) {
+                return true;
+            }
+        } else if (currChar == '.') {
             for (int i = 0; i < 26; i++) {
                 if (currNode.children[i] != null) {
-                    Boolean path = checkLevel(currNode.children[i], word, pos++);
+                    int next = pos+1;
+                    Boolean path = checkLevel(currNode.children[i], word, next);
                     if (path) {
-                        found = path;
+                        return true;
                     }
                 }
             }
-
-            return found;
+            return false;
         } else {
             if (currNode.children[currChar - 'a'] == null) {
                 return false;
             } else {
-                return checkLevel(currNode.children[currChar - 'a'], word, pos++);
+                pos++;
+                return checkLevel(currNode.children[currChar - 'a'], word, pos);
             }
         }
+
+        return false;
     }
     
     public boolean search(String word) {
