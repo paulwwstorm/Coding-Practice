@@ -118,3 +118,7 @@ Making Anki Cards
 Flashcard review
 
 Lots of work next week
+
+2025.08.08
+
+A little project planning
