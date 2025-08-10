@@ -122,3 +122,7 @@ Lots of work next week
 2025.08.08
 
 A little project planning
+
+2025.08.10
+
+Making Anki cards
