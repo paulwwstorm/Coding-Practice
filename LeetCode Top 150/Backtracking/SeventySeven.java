@@ -3,21 +3,25 @@ class Solution {
         List<List<Integer>> options = new ArrayList<>();
 
         for (int i = 1; i <= n; i++) {
+            List<List<Integer>> temp  = new ArrayList<>();
             for (int j = 0; j < options.size(); j++) {
-                List<Integer> next = options.get(j);
-                next.add(i);
-                options.add(next);
+                List<Integer> next = new ArrayList<Integer>(options.get(j));
+                if (next.size() > k) {
+                    options.remove(j);
+                } else {
+                    next.add(i);
+                    temp.add(next);
+                } 
             }
+
+            options.addAll(temp);
+
             List<Integer> curr = new ArrayList<>();
             curr.add(i);
             options.add(curr);
         }
 
-        for (int j = 0; j < options.size(); j++) {
-            if (options.get(j).size() != k) {
-                options.remove(j);
-            }
-        }
+        options.removeIf(o -> o.size() != k);
 
         return options;
     }
