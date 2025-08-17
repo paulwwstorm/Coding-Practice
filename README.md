@@ -126,3 +126,7 @@ A little project planning
 2025.08.10
 
 Making Anki cards
+
+2025.08.17
+
+Making Anki cards
