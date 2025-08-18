@@ -10,6 +10,6 @@
  */
 class Solution {
     public ListNode sortList(ListNode head) {
-        
+        //Think the first option is to try to use a recursive bubble sort
     }
 }
