@@ -11,17 +11,20 @@
 class Solution {
 
     public boolean bubbleSort(ListNode prev, boolean changed) {
-        ListNode curr = prev.next;
-        if (curr != null && curr.next != null) {
-            if (curr.next.val < curr.val) {
-                 prev.next = prev.next.next;
-                 prev.next.next = curr;
-                 changed = true;
+        if (prev.next != null) {
+            if (prev.next.next != null) {
+                ListNode curr = prev.next;
+                if (curr.next.val < curr.val) {
+                    ListNode currNext = curr.next.next;
+                    prev.next = prev.next.next;
+                    prev.next.next = curr;
+                    curr.next = currNext;
+                    
+                    changed = true;
+                }
             }
-            
-            bubbleSort(prev.next, changed);
-        } else {
-            return changed;
+
+            changed = bubbleSort(prev.next, changed);
         }
 
         return changed;
@@ -29,20 +32,22 @@ class Solution {
 
     public ListNode sortList(ListNode head) {
         boolean changed = true;
+        ListNode activeHead = head;
 
         while (changed) {
             changed = false;
 
-            ListNode curr = head;
+            ListNode curr = activeHead;
             if (curr != null && curr.next != null) {
                 if (curr.next.val < curr.val) {
                     ListNode next = curr.next.next;
                     head = curr.next;
-                    curr.next = curr;
-                    curr.next.next = next;
+                    curr.next = next;
+                    head.next = curr;
+                } else {
+                    activeHead = curr.next;
                 }
-                
-                bubbleSort(head, changed);
+                changed = bubbleSort(head, changed);
             } 
 
 
