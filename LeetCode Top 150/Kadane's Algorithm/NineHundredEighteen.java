@@ -8,35 +8,21 @@ class Solution {
         int numsLen = combined.length;
         int subArrayLen = 0;
 
-        for (int i = 0; i < numsLen; i++) {
+        for (int h = 0; h < nums.length; h++) {
+            curr = 0;
 
-            curr += combined[i];
-            subArrayLen++;
+            for (int i = h; i < nums.length+h; i++) {
 
-            if (curr > max) {
-                max = curr;
-            }
-
-            if (curr < 0) {
-                curr = 0;
-                subArrayLen = 0;
-            }
-
-            if (subArrayLen >= nums.length) {
-                System.out.println(String.valueOf(curr));
-                curr = curr-combined[i-(nums.length) + 1];
-                System.out.println(String.valueOf(combined[i-(nums.length) + 1]));
-
+                curr += combined[i];
                 if (curr > max) {
                     max = curr;
                 }
 
-                subArrayLen--;
+                if (curr < 0) {
+                    curr = 0;
+                }
 
-                // curr = (combined[i % numsLen] > 0) ? combined[i % numsLen] : 0;
-                // subArrayLen = (combined[i % numsLen] > 0) ? 1 : 0;
             }
-
         }
 
         return max;
