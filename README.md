@@ -134,3 +134,7 @@ Making Anki cards
 2025.08.22
 
 Anki card creation and review
+
+2025.09.22
+
+September Anki review
