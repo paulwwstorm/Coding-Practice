@@ -9,6 +9,7 @@ class Solution {
         for (int i = 0; i < projectCount; i++) {
             for (int j = 0; j <= projects; j++) {
                 if (capital[j] <= w) {
+                    System.out.println(String.valueOf(profits[j]));
                     if (profits[j] > highest) {
                         highest = profits[j];
                         project = j;
@@ -26,6 +27,7 @@ class Solution {
                 capital[project] = capital[projects];
                 capital[projects] = temp;
                 projects--;
+                project = 0;highest = 0;
             }
         }
 
