@@ -1,10 +1,8 @@
 class Solution {
     public int reverseBits(int n) {
+        // This is not how to convert to bits...
         String binaryString = Integer.toBinaryString(n);
         String binaryStringReverse = "";
-
-        System.out.println(binaryString);
-
 
         for (int i = 0; i < binaryString.length(); i++) {
             binaryStringReverse = binaryString.charAt(i) + binaryStringReverse;
