@@ -138,3 +138,7 @@ Anki card creation and review
 2025.09.22
 
 September Anki review
+
+2025.10.09
+
+New Anki cards and Tough Spanish planning
