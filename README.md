@@ -142,3 +142,7 @@ September Anki review
 2025.10.09
 
 New Anki cards and Tough Spanish planning
+
+2025.10.10
+
+Exploring open source through Hacktoberfest
