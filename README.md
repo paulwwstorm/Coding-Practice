@@ -146,3 +146,7 @@ New Anki cards and Tough Spanish planning
 2025.10.10
 
 Exploring open source through Hacktoberfest
+
+2025.10.15
+
+Adding Anki cards
