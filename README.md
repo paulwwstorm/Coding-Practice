@@ -150,3 +150,7 @@ Exploring open source through Hacktoberfest
 2025.10.15
 
 Adding Anki cards
+
+2025.10.16
+
+Tough Spanish开发计划
