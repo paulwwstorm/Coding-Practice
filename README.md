@@ -154,3 +154,7 @@ Adding Anki cards
 2025.10.16
 
 Tough Spanish开发计划
+
+2025.10.17
+
+Anki review
