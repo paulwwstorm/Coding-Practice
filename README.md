@@ -158,3 +158,7 @@ Tough Spanish开发计划
 2025.10.17
 
 Anki review
+
+2025.10.24
+
+Had an accident, taking the week off
