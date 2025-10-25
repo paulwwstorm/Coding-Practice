@@ -162,3 +162,7 @@ Anki review
 2025.10.24
 
 Had an accident, taking the week off
+
+2025.10.25
+
+New Anki cards and review
