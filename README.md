@@ -166,3 +166,7 @@ Had an accident, taking the week off
 2025.10.25
 
 New Anki cards and review
+
+2025.10.27
+
+Tough Spanish MVP and Roadmap
