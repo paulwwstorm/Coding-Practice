@@ -170,3 +170,7 @@ New Anki cards and review
 2025.10.27
 
 Tough Spanish MVP and Roadmap
+
+2025.10.28
+
+Tough Spanish first sprint (window)
