@@ -174,3 +174,7 @@ Tough Spanish MVP and Roadmap
 2025.10.28
 
 Tough Spanish first sprint (window)
+
+2025.11.12
+
+New Anki cards
