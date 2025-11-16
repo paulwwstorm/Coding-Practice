@@ -178,3 +178,7 @@ Tough Spanish first sprint (window)
 2025.11.12
 
 New Anki cards
+
+2025.11.16 
+
+Anki review
