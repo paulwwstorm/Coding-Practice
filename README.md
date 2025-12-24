@@ -182,3 +182,7 @@ New Anki cards
 2025.11.16 
 
 Anki review
+
+2025.12.23
+
+Anki review
