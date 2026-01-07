@@ -186,3 +186,7 @@ Anki review
 2025.12.23
 
 Anki review
+
+2026.01.06 
+
+First commit of the new year, going over my coding goals for the year
