@@ -190,3 +190,7 @@ Anki review
 2026.01.06 
 
 First commit of the new year, going over my coding goals for the year
+
+2026.01.21
+
+Anki is a bit of disaster at the moment
