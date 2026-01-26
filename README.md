@@ -194,3 +194,7 @@ First commit of the new year, going over my coding goals for the year
 2026.01.21
 
 Anki is a bit of disaster at the moment
+
+2026.01.26
+
+New Anki method.
